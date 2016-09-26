@@ -1,0 +1,10 @@
+{
+	entry = {
+		bundle = dutasmsettings;
+		cell = PSLinkCell;
+		detail = "TASMsettingsListController";
+		icon = "dutasmsettings.png";
+		isController = 1;
+		label = "The Amazing Spider-Man Cheats";
+	};
+}

@@ -35,22 +35,22 @@ hidme void didFinishLaunching(CFNotificationCenterRef center,void *observer,CFSt
 
                         Settings settings = "dutasmsettings.plist"; //your pist name
 
-                        Patch spidercoinsPatch = Patch((spidercoins + awesomesauce), "391c");
-                        Patch skillpointsPatch = Patch((skillpoints + awesomesauce), "391c");
+                        Patch *spidercoinsPatch = Patch::CreateInstrPatch((spidercoins + awesomesauce), "MOV R1, R7");
+                        Patch *skillpointsPatch = Patch::CreateInstrPatch((skillpoints + awesomesauce), "MOV R1, R7");
 
                         bool spdrc = settings["coinkey"];
                         bool skllp = settings["skillkey"];
 
                         if (spdrc) {
-                                spidercoinsPatch.Apply();
+                                spidercoinsPatch->Apply();
                         } else {
-                                spidercoinsPatch.Reset();
+                                spidercoinsPatch->Reset();
                         }
 
                         if (skllp) {
-                                skillpointsPatch.Apply();
+                                skillpointsPatch->Apply();
                         } else {
-                                skillpointsPatch.Reset();
+                                skillpointsPatch->Reset();
                         }
                 });
         });
